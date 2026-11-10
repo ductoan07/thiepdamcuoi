@@ -9,7 +9,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08, // Tăng thời gian trễ giữa các chữ (cũ là 0.05)
+      staggerChildren: 0.15, // Tăng thời gian trễ giữa các chữ (cũ là 0.05)
       delayChildren: 0.15,
     },
   },
