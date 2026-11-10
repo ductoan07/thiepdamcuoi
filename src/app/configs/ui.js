@@ -30,7 +30,7 @@ const weddingInfo = [
       time: "16:00",
       full: "Thứ Bảy, Ngày 28 Tháng 11 năm 2026",
     },
-    address: "388 đường Cách Mạng Tháng Tám, phường Sông Công, tỉnh Thái Nguyên",
+    address: "338 đường Cách Mạng Tháng Tám, phường Sông Công, tỉnh Thái Nguyên",
     street: "đường cách mạng tháng 8",
     phone: "0989 842 123",
     posision: "bottom left",

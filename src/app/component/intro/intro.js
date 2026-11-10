@@ -4,51 +4,44 @@ import images from "@/app/images";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { introSection, weddingInfo } from "@/app/configs/ui";
-
 const cx = classNames.bind(styles);
 
-// Nhịp xuất hiện mượt mà cho từng từ
+// Cấu hình nhịp xuất hiện nối tiếp cho các chữ cái (Stagger effect)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12, // Tăng nhẹ khoảng thời gian trễ giữa các từ
-      delayChildren: 0.1,
+      staggerChildren: 0.08, // Thời gian trễ giữa từng nét chữ
+      delayChildren: 0.2,
     },
   },
 };
 
-// Loại bỏ filter: blur(), thay bằng hiệu ứng trượt mượt tối ưu cho GPU
-const wordVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 16,
-    willChange: "transform, opacity" // Báo trước cho trình duyệt chuẩn bị GPU
-  },
+// Cấu hình chuyển động từng nét chữ (Mờ dần + Trượt nhẹ + Nét rõ)
+const letterVariants = {
+  hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.7, 
-      ease: [0.25, 0.1, 0.25, 1.0] // Cubic-bezier mượt hơn easeOut thông thường
-    },
+    filter: "blur(0px)",
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
 function Intro({ handleOpen, name = "You" }) {
   const ref = useRef(null);
 
-  // Tách từng TỪ (Word) thay vì từng KÝ TỰ (Char) để nhẹ DOM
-  const renderAnimatedWords = (text) => {
+  // Hàm hỗ trợ tách từng ký tự để chạy hiệu ứng nét chữ
+  const renderAnimatedText = (text) => {
     if (!text) return null;
-    return text.split(" ").map((word, index) => (
+    return text.split("").map((char, index) => (
       <motion.span
         key={index}
-        variants={wordVariants}
-        style={{ display: "inline-block", marginRight: "0.25em" }}
+        variants={letterVariants}
+        style={{ display: "inline-block", whiteSpace: "pre" }}
       >
-        {word}
+        {char}
       </motion.span>
     ));
   };
@@ -58,14 +51,14 @@ function Intro({ handleOpen, name = "You" }) {
       <div className={cx("block-wrapper")}>
         <div className={cx("block")}>
           <div className={cx("left")}>
-            {/* Hiệu ứng chữ chạy xuất hiện mượt cho "SAVE THE DATE" */}
+            {/* Hiệu ứng chữ chạy xuất hiện cho "SAVE THE DATE" */}
             <motion.p
               className={cx("header-text")}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {renderAnimatedWords("SAVE THE DATE")}
+              {renderAnimatedText("SAVE THE DATE")}
             </motion.p>
 
             <div className={cx("img-box")}>
@@ -75,11 +68,18 @@ function Intro({ handleOpen, name = "You" }) {
 
           <div className={cx("right")}>
             <div className={cx("text-box")}>
-              <p className={cx("date")}>
+              <p
+                className={cx("date")}
+                style={{
+                  fontFamily: "'Montserrat'",
+                  fontSize: "2rem",
+                  fontWeight: "500",
+                }}
+              >
                 {weddingInfo[0].time.full}
               </p>
 
-              {/* Tên Cô dâu & Chú rể */}
+              {/* Hiệu ứng chữ chạy xuất hiện cho Tên Cô dâu & Chú rể */}
               <motion.div
                 className={cx("name-box")}
                 variants={containerVariants}
@@ -87,15 +87,11 @@ function Intro({ handleOpen, name = "You" }) {
                 animate="visible"
               >
                 <h3 className={cx("name")} style={{ marginTop: "-40px" }}>
-                  <motion.span variants={wordVariants} style={{ display: "inline-block" }}>
-                    {introSection.brideFirstLetter}
-                  </motion.span>
+                  {renderAnimatedText(introSection.brideFirstLetter)}
                 </h3>
                 <span className={cx("and")}></span>
                 <h3 className={cx("name")} style={{ marginBottom: "-60px" }}>
-                  <motion.span variants={wordVariants} style={{ display: "inline-block" }}>
-                    {introSection.groomFirstLetter}
-                  </motion.span>
+                  {renderAnimatedText(introSection.groomFirstLetter)}
                 </h3>
               </motion.div>
 
@@ -104,6 +100,7 @@ function Intro({ handleOpen, name = "You" }) {
               </div>
             </div>
 
+            {/* Nút bấm giữ nguyên kích thước lớn, dịch xuống và nhấp nháy cả khung */}
             <motion.button
               className={cx("btn")}
               style={{
