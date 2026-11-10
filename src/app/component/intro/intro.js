@@ -6,26 +6,32 @@ import { useRef } from "react";
 import { introSection, weddingInfo } from "@/app/configs/ui";
 const cx = classNames.bind(styles);
 
-// Cấu hình nhịp xuất hiện nối tiếp cho các chữ cái (Stagger effect)
+// Cấu hình nhịp xuất hiện nối tiếp cho các chữ cái (Đã tinh chỉnh tốc độ mượt hơn)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08, // Thời gian trễ giữa từng nét chữ
-      delayChildren: 0.2,
+      staggerChildren: 0.05, // Giảm độ trễ giữa các chữ để hiệu ứng chạy nhanh và uyển chuyển hơn
+      delayChildren: 0.1,
     },
   },
 };
 
-// Cấu hình chuyển động từng nét chữ (Mờ dần + Trượt nhẹ + Nét rõ)
+// Tối ưu hóa hiệu ứng: BỎ hoàn toàn filter: blur(), chỉ dùng opacity và dịch chuyển y (Tối ưu GPU 100%)
 const letterVariants = {
-  hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
+  hidden: { 
+    opacity: 0, 
+    y: 10,
+    willChange: "transform, opacity" // Báo trước cho trình duyệt tối ưu phần cứng
+  },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { 
+      duration: 0.45, 
+      ease: [0.25, 0.1, 0.25, 1.0] // Đường cong chuyển động mượt (Cubic-bezier)
+    },
   },
 };
 
