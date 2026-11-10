@@ -72,7 +72,7 @@ const daysInMonth = [
 // invitation intro (first section)
 const introSection = {
   mainImage:
-    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E40",
+    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E41",
   brideFirstLetter: "Thuận",
   groomFirstLetter: "Ngọc",
 };
@@ -139,8 +139,8 @@ const giftSection = {
   groomBank: {
     name: "Ngụy Lý Tài Thuận",
     bankName: "MB BANK",
-    qr: 'https://res.cloudinary.com/ecsr9vbf/image/upload/v1794305624/qrck.jpg',
-    bankNumber: "199733869999",
+    qr: 'https://res.cloudinary.com/ecsr9vbf/image/upload/v1794311162/qrck.jpg',
+    bankNumber: "2080123998888",
   },
 };
 
