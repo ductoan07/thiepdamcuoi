@@ -72,7 +72,7 @@ const daysInMonth = [
 // invitation intro (first section)
 const introSection = {
   mainImage:
-    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E11",
+    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E40",
   brideFirstLetter: "Thuận",
   groomFirstLetter: "Ngọc",
 };

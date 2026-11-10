@@ -342,17 +342,17 @@
 
 .btn {
   margin: 24px 0;
-  font-family: Text;
+  font-family: Montserrat;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.8rem;
   background-color: transparent;
-  color: #333;
+  color: #a80e0e;
   border: none;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: zoom 2s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: zoom 1.3s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   &:hover {
     animation: none;
