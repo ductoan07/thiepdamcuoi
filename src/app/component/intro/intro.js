@@ -4,36 +4,35 @@ import images from "@/app/images";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { introSection, weddingInfo } from "@/app/configs/ui";
-const cx = classNames.bind(styles);
-
-// Cấu hình nhịp xuất hiện nối tiếp cho các chữ cái (Đã tinh chỉnh tốc độ mượt hơn)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05, // Giảm độ trễ giữa các chữ để hiệu ứng chạy nhanh và uyển chuyển hơn
-      delayChildren: 0.1,
+      staggerChildren: 0.08, // Tăng thời gian trễ giữa các chữ (cũ là 0.05)
+      delayChildren: 0.15,
     },
   },
 };
 
-// Tối ưu hóa hiệu ứng: BỎ hoàn toàn filter: blur(), chỉ dùng opacity và dịch chuyển y (Tối ưu GPU 100%)
+// Cấu hình chuyển động từng chữ cái (Thời gian chạy dài hơn để mượt và thong thả)
 const letterVariants = {
   hidden: { 
     opacity: 0, 
-    y: 10,
-    willChange: "transform, opacity" // Báo trước cho trình duyệt tối ưu phần cứng
+    y: 12,
+    willChange: "transform, opacity" 
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: { 
-      duration: 0.45, 
-      ease: [0.25, 0.1, 0.25, 1.0] // Đường cong chuyển động mượt (Cubic-bezier)
+      duration: 0.65, // Tăng thời gian fade-in & slide-up của mỗi chữ (cũ là 0.45)
+      ease: [0.25, 0.1, 0.25, 1.0] 
     },
   },
 };
+const cx = classNames.bind(styles);
+
 
 function Intro({ handleOpen, name = "You" }) {
   const ref = useRef(null);
