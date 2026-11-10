@@ -72,7 +72,7 @@ const daysInMonth = [
 // invitation intro (first section)
 const introSection = {
   mainImage:
-    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E17",
+    "https://res.cloudinary.com/ecsr9vbf/image/upload/f_auto,q_auto/v1793965992/E11",
   brideFirstLetter: "Thuận",
   groomFirstLetter: "Ngọc",
 };
@@ -129,18 +129,18 @@ const guestbookSection = {
 
 const giftSection = {
   image:
-    `${cdnLink}/E2`,
+    `${cdnLink}/E3`,
   brideBank: {
     name: "Đoàn Thị Ngọc",
-    bankName: "Vietinbank ",
-    qr: images.qr2.default.src,
-    bankNumber: "107880386791",
+    bankName: "Vietcombank ",
+    qr: 'https://res.cloudinary.com/ecsr9vbf/image/upload/v1794305624/qrvk.jpg',
+    bankNumber: "1042219157",
   },
   groomBank: {
     name: "Ngụy Lý Tài Thuận",
     bankName: "MB BANK",
-    qr: images.qr.default.src,
-    bankNumber: "9999999996654",
+    qr: 'https://res.cloudinary.com/ecsr9vbf/image/upload/v1794305624/qrck.jpg',
+    bankNumber: "199733869999",
   },
 };
 
@@ -169,7 +169,7 @@ const finalSection = {
 const albumPage = {
   topImage: `${cdnLink}/E5`,
   bottomImage: `${cdnLink}/E24`,
-  mainImage: `${cdnLink}/e18`,
+  mainImage: `${cdnLink}/e17`,
 };
 
 const albumA = [
@@ -292,7 +292,7 @@ const albumC = [
     imgs: [
       {
         id: 16,
-        img: `${cdnLink}/e3`,
+        img: `${cdnLink}/e2`,
       },
     ],
   },
