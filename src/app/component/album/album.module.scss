@@ -340,25 +340,50 @@
   }
 }
 
+// 1. Định nghĩa lại keyframes với biên độ zoom nhỏ hơn (ví dụ tối đa chỉ phóng to 1.05 lần thay vì mặc định quá lớn)
+@keyframes zoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Phóng vừa vừa (4%), tạo cảm giác nhịp đập nhẹ nhàng */
+  }
+}
+
+// 2. Gắn vào class .btn
 .btn {
-  margin: 24px 0;
-  font-family: Montserrat;
+  margin: 16px 0;
+  font-family: Times new roman, sans-serif;
   text-transform: uppercase;
-  font-size: 1.8rem;
-  background-color: transparent;
-  color: #a80e0e;
-  border: none;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  
+  background-color: #a80e0e; 
+  color: #ffffff;
+  border: 1.5px solid #a80e0e;
+  border-radius: 40px;
+  padding: 6px 12px; // Chữ ôm sát 2 viền cong
+  
+  box-shadow: 0 3px 10px rgba(168, 14, 14, 0.25);
+
   position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  animation: zoom 1.3s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 6px;
+  
+  transition: all 0.3s ease;
+  animation: zoom 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1); // Tăng thời gian lên 1.5s cho nhịp đập êm hơn
 
   &:hover {
     animation: none;
     cursor: pointer;
-    color: var(--primary);
-    font-weight: bold;
+    background-color: #ffffff;
+    color: #a80e0e;
+    border-color: #a80e0e;
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(168, 14, 14, 0.35);
   }
 }
 
